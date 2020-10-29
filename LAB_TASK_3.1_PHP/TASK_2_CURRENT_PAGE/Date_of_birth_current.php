@@ -1,6 +1,6 @@
 <?php
 if(!isset($_REQUEST['submit'])){
-	echo "Enter Email";
+	echo "Enter Date of Birth";
 }else{
 	$dob= $_REQUEST['date'];
 	echo "$dob";
