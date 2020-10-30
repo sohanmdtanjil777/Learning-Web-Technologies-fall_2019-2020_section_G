@@ -16,7 +16,9 @@
 
          } elseif(!empty($_REQUEST["number"])) {
 
-           $id=$_REQUEST["number"];
+
+           $id=test_input($_REQUEST["number"]);
+           
            if(is_numeric($id)!= 1)
            {
            	$idError = "Your id must be number";
@@ -31,6 +33,14 @@
               }
         
     }
+
+    function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+  } 
+
     ?>
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 	<fieldset>
