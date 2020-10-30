@@ -11,14 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (empty($_POST["name"])) {
 
-    $nameError = "Name is required";
+    $nameError = "Name cannot be Empty";
 
   } elseif(!empty($_POST["name"])) {
 
     $name = test_input($_POST["name"]);
 
     if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
-      $nameError = "Must start with a letter And Only letters and white space allowed";
+      $nameError = "Must start with a letter, And Only letters and white space allowed";
     }
    } 
    if(!empty($_POST["name"])){
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($n < $m) {
       $nameError="Required at least two words";
     }else{
-      echo "<h2>Your Input:</h2>";
+      echo "<h3> My Input Check:</h3>";
       echo $name;
     }
 
