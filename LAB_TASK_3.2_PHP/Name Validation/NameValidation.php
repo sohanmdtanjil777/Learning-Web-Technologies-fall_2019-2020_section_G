@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Name Field</title>
+	<title>Name Field</title>
 </head>
 <body>
 <?php
 $nameError="";
+$name="";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -15,12 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   } elseif(!empty($_POST["name"])) {
 
-    $name = test_input($_POST["name"]);
+  	$name=$_POST["name"];
 
-    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
-      $nameError = "Must start with a letter, And Only letters and white space allowed";
-    }
-   } 
+  	if(!ctype_alpha($name)){
+
+     $nameError="Only letters Allowed";
+   }
+}
+
    if(!empty($_POST["name"])){
       $name = test_input($_POST["name"]);
      $n=strlen($name);
@@ -34,6 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
    }
   }
+
+  
 
   function test_input($data) {
   $data = trim($data);
@@ -54,8 +59,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </form>
 
 
-
 </body>
 </html>
-
-
