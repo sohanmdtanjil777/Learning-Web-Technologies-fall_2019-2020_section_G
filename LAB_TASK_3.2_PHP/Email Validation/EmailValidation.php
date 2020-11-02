@@ -7,27 +7,34 @@
 	<?php
 
   $emailError="";
+  $email="";
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if (empty($_REQUEST["email"])) {
     $emailError = "Email field cannot be empty";
-  } else {
-    $email = test_input($_REQUEST["email"]);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailError = "Invalid email format";
-    }
-    echo "<h3> Email input check:</h3>";
-    echo $email;
-  }
-}
 
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-  }
+  } else {
+
+    $email = $_REQUEST["email"];
+
+    $aPosition= stripos($email,"@");
+    $fdot= strrpos($email,".");
+    
+    if ($aPosition>0 && strlen($email)>($fdot+1) && !stripos($email," ") ) {
+
+     	    echo $email;
+
+     	}else{
+
+  	         echo "Invalid email";
+
+           }
+
+       }
+   }
+   
+
   ?>
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     Email: <br><br><input type="text" id="email" name="email" value="" >
