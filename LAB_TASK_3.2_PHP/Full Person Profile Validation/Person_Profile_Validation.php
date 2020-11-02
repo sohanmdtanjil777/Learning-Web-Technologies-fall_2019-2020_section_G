@@ -24,6 +24,7 @@
 </head>
 <body>
 	<?php
+
     $nameError="";
     $emailError="";
     $genderError="";
@@ -71,14 +72,25 @@
 
       if (empty($_REQUEST["email"])) {
     $emailError = "Email field cannot be empty";
-     } else {
-    $email = test_input($_REQUEST["email"]);
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailError = "Invalid email format";
-    }
-    echo "<h3> Email input check:</h3>";
-    echo $email;
-    }
+
+  } else {
+
+    $email = $_REQUEST["email"];
+
+    $aPosition= stripos($email,"@");
+    $fdot= strrpos($email,".");
+    
+    if ($aPosition>0 && strlen($email)>($fdot+1) && !stripos($email," ") ) {
+
+          echo $email;
+
+      }else{
+
+             echo "Invalid email";
+
+           }
+
+       }
 
     /*-------Gender Validation------*/
 
