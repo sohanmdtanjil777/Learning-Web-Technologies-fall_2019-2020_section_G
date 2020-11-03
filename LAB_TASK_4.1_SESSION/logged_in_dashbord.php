@@ -28,9 +28,8 @@
 		<td width="500px"></td>
 		<td >
 			<ul type="none" >
-				<li class="header"><a href="Public_home.php">Home</a></li>
-				<li class="header"><a href="login.php">Login</a></li>
-				<li class="header"><a href="registration.php">Registration</a></li>
+				<li class="header">Logged in as |</li>
+				<li class="header"><a href="logout.php">Logout</a></li>
 			</ul>
 		</td>
 	</tr>
@@ -46,7 +45,7 @@
 				<li><a href="edit_profile.php">Edit Profile</a></li>
 				<li><a href="change_profile_picture.php">Change profile Picture</a></li>
 				<li><a href="change_password.php">Change Password</a></li>
-				<li><a href="logout.php"></a>Logout</li>
+				<li><a href="logout.php">Logout</a></li>
 			</ul>
 		</td>
 		<td colspan="2">
