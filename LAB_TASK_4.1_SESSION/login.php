@@ -35,9 +35,42 @@
 	<tr>
 		<td colspan="3">
 		<div align="center">
-			<form>
-				<fieldset style="width: 400px">
-					<legend>Log in</legend>
+		<form method="POST" action="login_check.php">
+
+			  <fieldset style="width: 400px">
+				<legend>Log in</legend>
+                  <table style="border: none;width: 400px;">
+                  	<tr>
+                  	  <td style="border-bottom: none;">
+                     <div>
+                     	<?php
+
+	                          if(isset($_GET['error'])){
+		
+		                         if($_GET['error'] == "empty_username"){
+			                            echo "user name empty";
+		                                 }
+
+		                             if($_GET['error'] == "empty_password"){
+			                            echo "Give your password";
+		                                }
+
+		                             if($_GET['error'] == "invalid_user"){
+			                            echo "user Invalid";
+		                                  }
+
+		                              if ($_GET['error'] == "password_invalid") {
+		                              	echo "invalid Password";
+		                              }
+	                                }
+
+                                 ?>
+                     </div><br>
+                       </td>
+                       </tr>
+                       <tr><br>
+                       	<td style="border-bottom: none;">
+                       	
 					User Name: <input type="text" id="name" name="name"> <br><br> 
 
                     Password:  <input type="Password" name="password"> <br>
@@ -49,6 +82,10 @@
                     <input type="submit" name="submit" value="Submit">
 
                     <a href="forgot_password.php">Forgot Password?</a>
+                     </td>
+                    </tr>
+
+                  </table>
 				</fieldset>
 			</form>
 			

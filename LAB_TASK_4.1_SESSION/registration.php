@@ -22,6 +22,9 @@
 </head>
 <body>
   <?php
+
+   session_start();
+
     $nameError="";
     $emailError="";
     $unameError="";
@@ -56,7 +59,8 @@
     $name = test_input($_POST["name"]);
 
     if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
-      $nameError = "Must start with a letter, And Only letters and white space allowed";
+     $nameError = "Must start with a letter, And Only letters and white space allowed";
+
       header('location: registration.php');
 
     }
@@ -89,7 +93,7 @@
     $email = test_input($_REQUEST["email"]);
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailError = "Invalid email format";
+     $emailError = "Invalid email format";
 
       header('location: registration.php');
 
@@ -113,6 +117,7 @@
 
     if (!preg_match("/^[a-zA-Z-' ]*$/",$uname)) {
       $unameError = "Must start with a letter, And Only letters and white space allowed";
+
       header('location: registration.php');
     }
    } 
@@ -176,6 +181,7 @@
       if (empty($_REQUEST["gender"])) {
 
          $genderError = "Gender is required";
+
          header('location: registration.php');
 
          } else {
@@ -250,23 +256,7 @@
 		        <tr >
 			        <td >Name</td>
 			        <td >:<input type="text" id="name" name="name" value="">
-			        	    <span>* <?php 
-
-                               /*--if(isset($_GET['error'])){
-		
-		                         if($_GET['error'] == "empty_uname"){
-			                           echo "Name cannot Be empty";
-
-		                            }elseif ($_GET['error'] == "invalid_username") {
-		                            	
-		                            	echo "Invalid Username";
-		                            }elseif ($_GET['error'] == "minimum_letter") {
-		                            	
-		                            	echo "Required at least two words";
-		                            }
-		                        }
-		                        --*/
-                               ?></span>
+			        	    <span>* <?php echo $nameError;?></span>
 
 			        </td>
 			        
