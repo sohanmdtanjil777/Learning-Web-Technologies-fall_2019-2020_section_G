@@ -41,7 +41,7 @@
 			</ul>
 			<ul>
 				<li><a href="logged_in_dashbord.php">Dashbord</a></li>
-				<li><a href="view_profile.php">View Profile</a></li>
+				<li><a href="profile_view_check.php">View Profile</a></li>
 				<li><a href="edit_profile.php">Edit Profile</a></li>
 				<li><a href="change_profile_picture.php">Change profile Picture</a></li>
 				<li><a href="change_password.php">Change Password</a></li>

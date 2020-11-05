@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+if(!isset($_COOKIE['view_profile']))
+{
+	header('location: login.php'); 
+}
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,13 +64,19 @@
 			</ul>
 		</td>
 		<td colspan="2">
-			<div>
+			<div align="center">
 				<fieldset style="width: 650px; height: 460px;">
 					<legend>Profile</legend>
 					<table style="width: 550px; height: 450px; border: none;">
 						<tr>
 							<td>Name</td>
-							<td>:</td>
+							<td>:<?php         
+                                       $name=$_SESSION['user_name'];
+                                       
+                                       echo "$name";
+
+							           ?> </td>
+
 							<td rowspan="2">
 								<div style="height: 170px;width: 170px;border: 1px solid black;">
 									<img align="center" src="user.PNG" height="140px" width="140">
@@ -65,17 +86,33 @@
 						</tr>
 						<tr>
 							<td>Email</td>
-							<td>:</td>
+							<td>:<?php 
+                                    $email=$_SESSION['user_email'];
+                                     
+                                     echo "$email";
+                                    
+							       ?></td>
 							
 						</tr>
 						<tr>
 							<td>Gender</td>
-							<td>:</td>
+							<td>:<?php
+                                $gender=$_SESSION['user_gender'];
+
+                                echo "$gender";
+
+							?></td>
 							<td></td>
 						</tr>
 						<tr>
 							<td>Date of Birth</td>
-							<td>:</td>
+							<td>:<?php
+                                  $dob=$_SESSION['user_dob'];
+                                  echo "$dob";
+
+							?>
+
+							</td>
 							<td></td>
 						</tr>
 						<tr>
