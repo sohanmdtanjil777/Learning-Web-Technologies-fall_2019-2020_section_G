@@ -255,7 +255,7 @@
 		         
 		        <tr >
 			        <td >Name</td>
-			        <td >:<input type="text" id="name" name="name" value="">
+			        <td >:<input type="text" id="name" name="name" value="<?php echo $name;?>">
 			        	    <span>* <?php echo $nameError;?></span>
 
 			        </td>

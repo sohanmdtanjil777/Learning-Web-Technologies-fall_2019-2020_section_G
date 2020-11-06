@@ -11,19 +11,21 @@
         	border-collapse: collapse;
 
         }
+        
         td{
-        	border: 1px solid black;
+        	border-bottom: 1px solid black;
         }
+
 	</style>
 </head>
 <body>
 <table width="100%">
 	<tr style="height: 30px">
-		<td><img align="left" src="logo.PNG" height="30px" width="75px"></td>
+		<td><img align="left" src="logo.PNG" height="60px" width="100px"></td>
 		<td width="700px"></td>
 		<td >
 			<ul type="none" >
-				<li><a href="home.php">Home</a></li>
+				<li><a href="Public_home.php">Home</a></li>
 				<li><a href="login.php">Login</a></li>
 				<li><a href="registration.php">Registration</a></li>
 			</ul>
