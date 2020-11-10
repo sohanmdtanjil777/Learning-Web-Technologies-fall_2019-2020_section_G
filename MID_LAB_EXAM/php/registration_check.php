@@ -3,6 +3,7 @@
    session_start();
 
    $myfile="";
+   $sp="|";
 
  
 
@@ -22,7 +23,8 @@
 
         $myfile = fopen("user.txt", "a");
 
-        fwrite($myfile, $name);
+        fwrite($myfile, $id);
+        fwrite($myfile, $sp);
     }
 
 
@@ -38,6 +40,7 @@
             $password=$_REQUEST['password'];
 
              fwrite($myfile, $password);
+             fwrite($myfile, $sp);
 
         }
 
@@ -57,6 +60,7 @@
           if ($password == $cpassword ){
 
              fwrite($myfile, $cpassword);
+             fwrite($myfile, $sp);
 
           }else{
 
@@ -94,6 +98,7 @@
         }else{
       
          fwrite($myfile, $name);
+         fwrite($myfile, $sp);
 
       }
 
@@ -112,8 +117,9 @@
          } else {
 
           $type= $_REQUEST['type'];
-           fwrite($myfile, $type);
-           
+           fwrite($myfile, $type . "\n");
+
+           header('location:../interface/registration.php');
         } 
 
 
