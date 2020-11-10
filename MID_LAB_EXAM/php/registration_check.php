@@ -2,6 +2,8 @@
 
    session_start();
 
+   $myfile="";
+
  
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,8 +12,17 @@
   /*------Id validation-----*/
 
     if (empty($_POST['id'])) {
-      
 
+         $idError="give a id";
+
+        header('location:../interface/registration.php');
+    }else{
+
+         $id=$_REQUEST['id'];
+
+        $myfile = fopen("user.txt", "a");
+
+        fwrite($myfile, $name);
     }
 
 
@@ -19,27 +30,40 @@
 
       if (empty($_REQUEST["password"])) {
 
-         $passError = "Give a password";
-      
+         $passError = "Give your password";
+         header('location:../interface/registration.php');
 
-         } else {
+         } else{
            
-        } 
+            $password=$_REQUEST['password'];
+
+             fwrite($myfile, $password);
+
+        }
 
     /*--------Confirm Password------*/
 
      if (empty($_REQUEST["cpassword"])) {
 
          $cpassError = "confirm your password";
+         header('location:../interface/registration.php');
 
-         }if ($password == $cpassword ) {
 
-            
+         }else{
+
+
+          $cpassword = $_REQUEST["cpassword"];
+
+          if ($password == $cpassword ){
+
+             fwrite($myfile, $cpassword);
+
           }else{
 
             $cpassError="password did not matched";
-           
+            header('location:../interface/registration.php');
           }
+        }
   
 	
 
@@ -48,31 +72,29 @@
 		if (empty($_POST["user_name"])) {
 
         $nameError = "Name cannot be Empty";
-
+        header('location:../interface/registration.php');
        
 
   } elseif(!empty($_POST["user_name"])) {
 
-    $name = test_input($_POST["user_name"]);
+    $name = $_POST["user_name"];
 
     if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
      $nameError = "Must start with a letter";
 
-      
-
-    }
+      }
    } 
    if(!empty($_POST["user_name"])){
-       $name = test_input($_POST["user_name"]);
+       $name = $_POST["user_name"];
         $n=strlen($name);
         $m=2;
         if ($n < $m) {
         $nameError="Required at least two letter";
 
-        
-     }else{
+        }else{
       
-         
+         fwrite($myfile, $name);
+
       }
 
      }
@@ -89,8 +111,8 @@
 
          } else {
 
-
-     
+          $type= $_REQUEST['type'];
+           fwrite($myfile, $type);
            
         } 
 
