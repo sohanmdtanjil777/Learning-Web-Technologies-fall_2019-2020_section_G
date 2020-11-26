@@ -43,25 +43,185 @@
     $gender="";
     $date="";
 
-    /*---id validation*/
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-    
+    if (empty($_POST["name"])) {
 
- 
+        $nameError = "Name cannot be Empty";
 
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        header('location: registration.php');
 
+  } elseif(!empty($_POST["name"])) {
 
-    /*-----Id validation-----*/
+    $name = test_input($_POST["name"]);
 
-    if (empty($_POST[])) {
-      # code...
+    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+     $nameError = "Must start with a letter, And Only letters and white space allowed";
+
+      header('location: registration.php');
+
     }
-	
+   } 
+   if(!empty($_POST["name"])){
+       $name = test_input($_POST["name"]);
+        $n=strlen($name);
+        $m=2;
+        if ($n < $m) {
+        $nameError="Required at least two words";
 
+        header('location: registration.php');
+     }else{
+      
+         $_SESSION['user_name'] = "$name";
+      }
+
+     }
+
+     /*--------Email validation-------*/
+
+      if (empty($_REQUEST["email"])) {
+
+    $emailError = "Email field cannot be empty";
+
+     header('location: registration.php');
+
+     } else {
+
+    $email = test_input($_REQUEST["email"]);
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+     $emailError = "Invalid email format";
+
+      header('location: registration.php');
+
+    }
+
+    $_SESSION['user_email'] = "$email";
+
+    }
+
+    /*-------Uname Validation-----*/
+
+    if (empty($_POST["uname"])) {
+
+    $unameError = "You have to Give an userName";
+
+    header('location: registration.php');
+
+  } elseif(!empty($_POST["uname"])) {
+
+    $uname = test_input($_POST["uname"]);
+
+    if (!preg_match("/^[a-zA-Z-' ]*$/",$uname)) {
+      $unameError = "Must start with a letter, And Only letters and white space allowed";
+
+      header('location: registration.php');
+    }
+   } 
+   if(!empty($_POST["uname"])){
+       $uname = test_input($_POST["uname"]);
+        $n=strlen($uname);
+        $m=2;
+
+        if ($n < $m) {
+        $unameError="Required at least two words";
+        header('location: registration.php');
+
+     }else{
+      
+      
+         $_SESSION['user_uname'] = "$uname";
+      }
+
+     }
+
+     /*----------PassWord------------*/
+
+      if (empty($_REQUEST["password"])) {
+
+         $passError = "Give a password";
+         header('location: registration.php');
+
+         } else {
+           $password = test_input($_REQUEST["password"]);
+          
+           $_SESSION['user_password'] = "$password";
+          
+        } 
+
+     /*--------Confirm Password------*/
+
+     if (empty($_REQUEST["cpassword"])) {
+
+         $cpassError = "confirm your password";
+         header('location: registration.php');
+
+         } else {
+
+         	$cpassword = test_input($_REQUEST["cpassword"]);
+
+             if ($password == $cpassword ) {
+
+             	$_SESSION['user_cpassword'] = "$cpassword";
+         		
+         	}else{
+
+         		$cpassError="password did not matched";
+         		header('location: registration.php');
+
+         	}
+           
+        } 
+
+    /*-------Gender Validation------*/
+
+      if (empty($_REQUEST["gender"])) {
+
+         $genderError = "Gender is required";
+
+         header('location: registration.php');
+
+         } else {
+
+           $gender = test_input($_REQUEST["gender"]);
+          
+          $_SESSION['user_gender'] = "$gender";
+        }
+
+
+    /*---------Date Of Birth-------*/
+    
+          if (empty($_REQUEST["date"])) {
+
+         $dateError = "Enter date of Birth";
+         header('location: registration.php');
+
+         } else{
+
+          $date= test_input($_REQUEST["date"]);
+
+         $_SESSION['user_dob'] = "$date";
+
+        }
+
+if (strlen($nameError)==0 && strlen($emailError)==0 && strlen($unameError)==0 && strlen($passError==0) && strlen($cpassError)==0 && strlen($genderError)==0 && strlen($dateError)==0) {
+
+      	  header('location: login.php');
+         	
+         }   
 
   }
+
+  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
+
 	?>
 
 
