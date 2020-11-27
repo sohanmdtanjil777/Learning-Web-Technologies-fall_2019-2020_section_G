@@ -6,10 +6,10 @@
 <body>
    <h3>Welcome to home page</h3>
    
-    <a href="create.php">Create New User</a> |
-	<a href="profile.php">Profile</a> |
-	<a href="userlist.php">User List</a> |
-	<a href="../php/logout.php">logout</a>
+    <a href="create_user.php">Create New User</a> |
+	<a href="">Profile</a> |
+	<a href="user_list.php">User List</a> |
+	<a href="../php/log_out.php">logout</a>
 
    
 </body>

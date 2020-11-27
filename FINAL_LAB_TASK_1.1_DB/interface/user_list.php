@@ -42,7 +42,7 @@ if(isset($_GET['msg'])){
 </head>
 <body>
    <a href="home.php">Back</a> |
-	<a href="../php/logout.php">logout</a>
+	<a href="../php/log_out.php">logout</a>
 
 	<h3>User list</h3>
 	<table border="1"> 
