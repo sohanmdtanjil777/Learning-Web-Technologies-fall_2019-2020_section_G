@@ -64,8 +64,8 @@ if(isset($_GET['msg'])){
 				<td><?=$data['email']?></td>
 				<td><?=$data['type']?></td>
 				<td>
-					<a href="edit.php?id=<?=$data['id']?>">EDIT</a> | 
-					<a href="delete.php?id=<?=$data['id']?>">DELETE</a>
+					<a href="edit_user.php?id=<?=$data['id']?>">EDIT</a> | 
+					<a href="delete_user.php?id=<?=$data['id']?>">DELETE</a>
 				</td>
 			</tr>
 	<?php } ?>
