@@ -1,3 +1,29 @@
+<?php
+
+
+if(isset($_GET['msg'])){
+		
+		if($_GET['msg'] == "conn_error"){
+
+			echo "conn error found";
+		}
+
+		
+		if($_GET['msg'] == "error"){
+
+			echo "error found";
+		}
+
+
+	}
+
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +31,7 @@
 </head>
 <body>
 <div align="center">
-	<form>
+	<form method="post" action="../php/employee_reg_check.php">
 		<fieldset style="width: 400px">
 			<legend>New Employee</legend>
 			<table>
