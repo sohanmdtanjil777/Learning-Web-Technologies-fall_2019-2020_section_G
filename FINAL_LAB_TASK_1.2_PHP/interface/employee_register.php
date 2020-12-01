@@ -4,9 +4,9 @@
 	<title>Register</title>
 </head>
 <body>
-<div>
+<div align="center">
 	<form>
-		<fieldset>
+		<fieldset style="width: 400px">
 			<legend>New Employee</legend>
 			<table>
 				<tr>
@@ -15,28 +15,32 @@
 				</tr>
 
 				<tr>
-					<td>Company Name</td>
-					<td><input type="text" name="coname"></td>
+					<td><hr>Company Name</td>
+					<td><hr><input type="text" name="coname"></td>
 				</tr>
 
 				<tr>
-					<td>Contact No</td>
-					<td><input type="text" name="contact"></td>
+					<td><hr>Contact No</td>
+					<td><hr><input type="text" name="contact"></td>
 				</tr>
 
 				<tr>
-					<td>User name</td>
-					<td><input type="text" name="uname"></td>
+					<td><hr>User name</td>
+					<td><hr><input type="text" name="uname"></td>
 				</tr>
 
 				<tr>
-					<td>Password</td>
-					<td><input type="Password" name="password"></td>
+					<td><hr>Password</td>
+					<td><hr><input type="Password" name="password"></td>
 				</tr>
 
 				<tr>
-					<td>User Type</td>
-					<td><input type="text" name="utype"></td>
+					<td><hr>User Type</td>
+					<td><hr><input type="text" name="utype"></td>
+				</tr>
+
+				<tr>
+					<td colspan="2"><hr><input type="submit" name="submit" value="Submit"></td>
 				</tr>
 
 			</table>
