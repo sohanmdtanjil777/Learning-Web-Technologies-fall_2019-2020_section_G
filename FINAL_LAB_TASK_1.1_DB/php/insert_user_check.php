@@ -10,7 +10,7 @@ session_start();
 
 <?php
 
-require_once('../database/database.php');
+require_once('../models/usersService.php');
 
 
 $uname = "";
@@ -86,14 +86,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          } 
 
 
- $conn = getConnection();
-
-$sql = "INSERT INTO user_table (user_name, password, email, type) VALUES ('$uname', '$password', '$email', '$type')";
+ 
 
 if (strlen($uname_err) == 0 && strlen($password_err) == 0 && strlen($email_err) == 0 && strlen($type_err) == 0) {
 
+
+  $user = ["uname"=> $uname, "password"=> $password, "email"=> $email, "type" => $type];
+
+  $flag = insertUser($user);
+
   
-  if (mysqli_query($conn, $sql)) {
+  if ($flag){
 
 
   	unset($_SESSION["form_uname"]);

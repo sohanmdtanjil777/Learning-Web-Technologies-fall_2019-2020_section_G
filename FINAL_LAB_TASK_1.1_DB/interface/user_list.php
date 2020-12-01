@@ -1,10 +1,9 @@
 <?php
 
-	require_once('../database/database.php');
+	require_once('../models/usersService.php');
 
-	$conn = getConnection();
-	$sql = 'select * from user_table';
-	$result = mysqli_query($conn, $sql);
+	$allusers = getAlluser();
+
 
 ?>
 
@@ -55,17 +54,17 @@ if(isset($_GET['msg'])){
 			<td>ACTION</td>
 		</tr>
 
-	<?php while($data = mysqli_fetch_assoc($result)){ ?>
+	<?php for($i=0; $i< count($allusers); $i++){ ?>
 
 			<tr>
-				<td><?=$data['id']?></td>
-				<td><?=$data['user_name']?></td>
-				<td><?=$data['password']?></td>
-				<td><?=$data['email']?></td>
-				<td><?=$data['type']?></td>
+				<td><?=$allusers[$i]['id']?></td>
+				<td><?=$allusers[$i]['user_name']?></td>
+				<td><?=$allusers[$i]['password']?></td>
+				<td><?=$allusers[$i]['email']?></td>
+				<td><?=$allusers[$i]['type']?></td>
 				<td>
-					<a href="edit_user.php?id=<?=$data['id']?>">EDIT</a> | 
-					<a href="delete_user.php?id=<?=$data['id']?>">DELETE</a>
+					<a href="edit_user.php?id=<?=$allusers[$i]['id']?>">EDIT</a> | 
+					<a href="delete_user.php?id=<?=$allusers[$i]['id']?>">DELETE</a>
 				</td>
 			</tr>
 	<?php } ?>

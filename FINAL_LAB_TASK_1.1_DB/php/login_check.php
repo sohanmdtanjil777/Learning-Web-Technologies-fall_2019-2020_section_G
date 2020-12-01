@@ -1,6 +1,6 @@
 <?php
 	
-	require_once('../database/database.php');
+	require_once('../models/database.php');
 
 	if(isset($_POST['submit'])){
 
