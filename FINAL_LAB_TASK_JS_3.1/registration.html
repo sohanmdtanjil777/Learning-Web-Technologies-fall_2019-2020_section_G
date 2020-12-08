@@ -21,7 +21,8 @@
 </head>
 <body>
 	<div align="center">
-          <form >
+          <form action="" onsubmit="return formValidation()" >
+
 	          <table border="1px solid black" style="width: 500px;">
 		         <tr>
 			        <th colspan="3"> <h2>Person Profile</h2> </th>
@@ -29,21 +30,21 @@
 		        <tr >
 			        <td >Name</td>
 			        <td ><input type="text" id="name" name="name" value=""></td>
-			        <td ></td>
+			        <td ><span id="name_err"></span></td>
 		        </tr>
 		        <tr>
 		        	<td>Email</td>
 		        	<td><input type="email" id="email" name="email"></td>
-		        	<td ></td>
+		        	<td ><span id="email_err"></span></td>
 		        </tr>
 		        <tr>
 		        	<td>Gender</td>
 		        	<td>
-		        		<input type="radio" id="male" name="gender" value=""> Male
-                        <input type="radio" id="female" name="gender" value=""> Female
-                        <input type="radio" id="other" name="gender" value=""> Other 
+		        		<input type="radio" id="male" name="gender" value="male"> Male
+                        <input type="radio" id="female" name="gender" value="female"> Female
+                        <input type="radio" id="other" name="gender" value="other"> Other 
 		        	</td>
-		        	<td ></td>
+		        	<td ><span id="gender_err"></span></td>
 		        </tr>
 		        <tr>
 		        	<td>Date of Birth</td>
@@ -62,16 +63,16 @@
                         <option value="O+">O+</option>
                         </select>
 		        	</td>
-		        	<td ></td>
+		        	<td ><span id="blood_err"></span></td>
 		        </tr>
 		        <tr>
 		        	<td>Degree</td>
 		        	<td>
-		        		<input type="checkbox" id="ssc" name="ssc" value=""> SSC 
-                        <input type="checkbox" id="hsc" name="hsc" value="">HSC 
-                        <input type="checkbox" id="bsc" name="bsc" value="">BSC
+		        		<input type="checkbox" id="ssc" name="checkbox[]" value=""> SSC 
+                        <input type="checkbox" id="hsc" name="checkbox[]" value="">HSC 
+                        <input type="checkbox" id="bsc" name="checkbox[]" value="">BSC
 		        	</td>
-		        	<td ></td>
+		        	<td ><span id="degree_err"></span></td>
 		        </tr>
 		        <tr>
 		        	<td>Photo</td>
