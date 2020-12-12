@@ -21,7 +21,7 @@
 </head>
 <body>
 	<div align="center">
-          <form action="" onsubmit="return formValidation()" >
+          <form name="regForm" action="regtest.php" method="post" onsubmit="return formValidation()" >
 
 	          <table border="1px solid black" style="width: 500px;">
 		         <tr>
@@ -31,6 +31,7 @@
 			        <td >Name</td>
 			        <td ><input type="text" id="name" name="name" value=""></td>
 			        <td ><span id="name_err"></span></td>
+
 		        </tr>
 		        <tr>
 		        	<td>Email</td>
