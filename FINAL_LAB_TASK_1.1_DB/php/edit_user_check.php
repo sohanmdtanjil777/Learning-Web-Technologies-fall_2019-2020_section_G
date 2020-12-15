@@ -10,7 +10,7 @@ session_start();
 
 <?php
 
-require_once('../database/database.php');
+require_once('../models/database.php');
 
 
 $uname = "";

@@ -1,13 +1,11 @@
 
+
 function formValidation(){
 
 
 
 	var name = document.getElementById('name').value.trim();
 	var email = document.getElementById('email').value.trim();
-	//var male = document.getElementById('male').value.trim();
-	//var female = document.getElementById('female').value.trim();
-	//var other = document.getElementById('other').value.trim();
 	var gender = document.regForm.gender.value.trim();
 	var day = document.getElementById('day').value.trim();
 	var month = document.getElementById('month').value.trim();
@@ -21,6 +19,12 @@ function formValidation(){
    var name_flag = "";
    var email_flag = "";
    var gender_flag = "";
+   var dob_flag = "";
+   var bloodGroup_flag = "";
+   var ssc = "";
+   var hsc = "";
+   var bse = "";
+
    
    // Name Empty Check
 
@@ -32,7 +36,7 @@ function formValidation(){
 
 		name_flag = "error";
 
-	   //return false;
+	   
 
 	}
 
@@ -43,11 +47,11 @@ function formValidation(){
 
 		if (!(name[0].toLowerCase() >='a' && name[0].toLowerCase() <='z')){
 
-          name_flag = "error";
+          
 
 		  document.getElementById('name_err').innerHTML = "name must be start with a letter";
-
-	      return false; 
+      name_flag = "error";
+	      
 
 		}
 	}
@@ -70,11 +74,11 @@ function formValidation(){
 
    if (count != 0){
 
-   	     name_flag = "error"
+   	     
 
 		document.getElementById('name_err').innerHTML = " only character ";
 
-		return false;
+		name_flag = "error";
 
    }
 
@@ -91,19 +95,20 @@ function formValidation(){
 
         if (doubleDot >= 0){
 
-        	name_flag = "error"
+        	
 
 		 document.getElementById('name_err').innerHTML = "name cannot contain Double Dot (..) or more";
-
-		 return false;
+       
+       name_flag = "error";
+		 
 
         }else if (doubleDash >= 0){
 
-          name_flag = "error"
+          
 
 		  document.getElementById('name_err').innerHTML = "name cannot contain Double dash (--) or more";
 
-		  return false;
+		  name_flag = "error";
 
         }
 
@@ -134,11 +139,11 @@ function formValidation(){
 
    if (alphaCount != 0){
 
-   	     name_flag = "error"
+   	     
 
 		document.getElementById('name_err').innerHTML = " name only contain A to Z or a to z ";
 
-		return false;
+		name_flag = "error";
 
    }
 
@@ -151,11 +156,11 @@ function formValidation(){
 
   if (name.split(" ").length < 2){
 
-		name_flag = "error"
+		
 
 		document.getElementById('name_err').innerHTML = "name must be at least two words";
 
-		return false;
+		name_flag = "error";
 
 
 	}
@@ -201,35 +206,37 @@ function formValidation(){
 
      if (notallowed >= 0 || notallowed1 >= 0){
 
-         var email_flag = "error";
+          
 
 		document.getElementById('email_err').innerHTML = "(.@) and (..) is not allowed ";
 
-		return false;
+		email_flag = "error";
 
      }else if ( atposition < 1 || firstDot < 1 ){
 
-         var email_flag = "error";
+         
 
 		document.getElementById('email_err').innerHTML = "(.) and (@) is not allowed in first Position";
 
-		return false;
+    email_flag = "error";
+
+		
 
      }else if (!(atposition+2 < lastDot)){
 
-          var email_flag = "error";
+         
 
 		document.getElementById('email_err').innerHTML = "put atleast two character after(@)";
 
-		return false;
+		email_flag = "error";
 
      }else if (!(lengthOfEmail-1 >= lastDot+2)){
 
-        var email_flag = "error";
+         
 
 		document.getElementById('email_err').innerHTML = "put atleast two character after last dot";
 
-		return false;
+		email_flag = "error";
 
      }
 
@@ -265,7 +272,23 @@ function formValidation(){
 
 	}
 
-	if( name_flag != "" || email_flag != "" || gender_flag != ""){
+  if (day == "" || month == "" || year == ""){
+
+    document.getElementById('dob_err').innerHTML = "Date of Birth required";
+
+    dob_flag = "error";
+
+
+
+  }
+
+  if (dob_flag == ""){
+
+     var obj3 = document.getElementById('dob_err').innerHTML = "";
+
+  }
+
+	if( name_flag != "" || email_flag != "" || gender_flag != "" || dob_flag != ""){
 
       
         return false;
@@ -278,6 +301,40 @@ function formValidation(){
 	}
 
 
+
+
+
+}
+
+
+function sendToPhp(){
+
+
+  let name = document.getElementById('name').value.trim();
+  let email = document.getElementById('email').value.trim();
+  let gender = document.regForm.gender.value.trim();
+  let day = document.getElementById('day').value.trim();
+  let month = document.getElementById('month').value.trim();
+  let year = document.getElementById('year').value.trim();
+  let bloodGroup = document.getElementById('bloodGroup').value.trim();
+  let ssc = document.getElementById('ssc').value.trim();
+  let hsc = document.getElementById('hsc').value.trim();
+  let bsc = document.getElementById('bsc').value.trim();
+
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.open('POST', 'insert.php', true);
+
+  xhttp.send();
+  
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+      
+      document.getElementById('search').innerHTML = this.responseText;
+    }
+  }
+  
 
 
 

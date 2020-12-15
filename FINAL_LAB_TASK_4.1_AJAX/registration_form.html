@@ -21,7 +21,7 @@
 </head>
 <body>
 	<div align="center">
-          <form name="regForm" action="regtest.php" method="post" onsubmit="return formValidation()" >
+          <form name="regForm"  onsubmit="return formValidation()" >
 
 	          <table border="1px solid black" style="width: 500px;">
 		         <tr>
@@ -51,7 +51,7 @@
 		        	<td>Date of Birth</td>
 		        <td><input style="width: 20px;" type="text" id="day" name="day" value="" maxlength="2">/<input style="width: 20px;" type="text" id="month" name="month" value="" maxlength="2">/<input style="width: 30px;" type="text" id="year" name="year" value="" maxlength="4">(dd/mm/yy)
 		        </td>
-		        	<td ></td>
+		        	<td ><span id="dob_err"></span></td>
 		        </tr>
 		        <tr>
 		        	<td>Blood Group</td>
