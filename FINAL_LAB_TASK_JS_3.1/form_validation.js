@@ -12,7 +12,7 @@ function formValidation(){
 	var day = document.getElementById('day').value.trim();
 	var month = document.getElementById('month').value.trim();
 	var year = document.getElementById('year').value.trim();
-	var bloodGroup = document.getElementById('bloodGroup').value.trim();
+	var bloodGroup = document.regForm.bloodGroup.value.trim();
 	var ssc = document.getElementById('ssc').value.trim();
 	var hsc = document.getElementById('hsc').value.trim();
 	var bsc = document.getElementById('bsc').value.trim();
@@ -21,6 +21,8 @@ function formValidation(){
    var name_flag = "";
    var email_flag = "";
    var gender_flag = "";
+   var dob_flag = "";
+   var blood_flag ="";
    
    // Name Empty Check
 
@@ -43,11 +45,13 @@ function formValidation(){
 
 		if (!(name[0].toLowerCase() >='a' && name[0].toLowerCase() <='z')){
 
-          name_flag = "error";
+          
 
 		  document.getElementById('name_err').innerHTML = "name must be start with a letter";
 
-	      return false; 
+      name_flag = "error";
+
+	      //return false; 
 
 		}
 	}
@@ -70,11 +74,13 @@ function formValidation(){
 
    if (count != 0){
 
-   	     name_flag = "error"
+   	     
 
 		document.getElementById('name_err').innerHTML = " only character ";
 
-		return false;
+    name_flag = "error";
+
+		//return false;
 
    }
 
@@ -91,19 +97,23 @@ function formValidation(){
 
         if (doubleDot >= 0){
 
-        	name_flag = "error"
+        	
 
 		 document.getElementById('name_err').innerHTML = "name cannot contain Double Dot (..) or more";
 
-		 return false;
+     name_flag = "error";
+
+		 //return false;
 
         }else if (doubleDash >= 0){
 
-          name_flag = "error"
+          
 
 		  document.getElementById('name_err').innerHTML = "name cannot contain Double dash (--) or more";
 
-		  return false;
+      name_flag = "error";
+
+		  //return false;
 
         }
 
@@ -134,11 +144,13 @@ function formValidation(){
 
    if (alphaCount != 0){
 
-   	     name_flag = "error"
+   	     
 
 		document.getElementById('name_err').innerHTML = " name only contain A to Z or a to z ";
 
-		return false;
+    name_flag = "error";
+
+		//return false;
 
    }
 
@@ -151,11 +163,13 @@ function formValidation(){
 
   if (name.split(" ").length < 2){
 
-		name_flag = "error"
+		
 
 		document.getElementById('name_err').innerHTML = "name must be at least two words";
 
-		return false;
+    name_flag = "error";
+
+		//return false;
 
 
 	}
@@ -201,35 +215,43 @@ function formValidation(){
 
      if (notallowed >= 0 || notallowed1 >= 0){
 
-         var email_flag = "error";
+         
 
 		document.getElementById('email_err').innerHTML = "(.@) and (..) is not allowed ";
 
-		return false;
+    email_flag = "error";
+
+		//return false;
 
      }else if ( atposition < 1 || firstDot < 1 ){
 
-         var email_flag = "error";
+         
 
 		document.getElementById('email_err').innerHTML = "(.) and (@) is not allowed in first Position";
 
-		return false;
+    email_flag = "error";
+
+		//return false;
 
      }else if (!(atposition+2 < lastDot)){
 
-          var email_flag = "error";
+           
 
 		document.getElementById('email_err').innerHTML = "put atleast two character after(@)";
 
-		return false;
+    email_flag = "error";
+
+		//return false;
 
      }else if (!(lengthOfEmail-1 >= lastDot+2)){
 
-        var email_flag = "error";
+       
 
 		document.getElementById('email_err').innerHTML = "put atleast two character after last dot";
 
-		return false;
+    email_flag = "error";
+
+		//return false;
 
      }
 
@@ -265,7 +287,37 @@ function formValidation(){
 
 	}
 
-	if( name_flag != "" || email_flag != "" || gender_flag != ""){
+  if (day == "" || month == "" || year == ""){
+
+    document.getElementById('dob_err').innerHTML = "Date of Birth required";
+
+    dob_flag = "error";
+
+
+
+  }
+
+  if (dob_flag == ""){
+
+     var obj3 = document.getElementById('dob_err').innerHTML = "";
+
+  }
+
+  if (bloodGroup == ""){
+
+  document.getElementById('blood_err').innerHTML = "blood group required";
+
+  blood_flag = "error";
+
+  }
+
+  if (blood_flag == "" ){
+     
+      var obj4 = document.getElementById('blood_err').innerHTML = "";  
+  }
+
+
+	if( name_flag != "" || email_flag != "" || gender_flag != "" || dob_flag != "" || blood_flag != "" ){
 
       
         return false;

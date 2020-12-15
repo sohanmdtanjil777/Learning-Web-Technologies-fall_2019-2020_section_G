@@ -10,10 +10,10 @@ function formValidation(){
 	var day = document.getElementById('day').value.trim();
 	var month = document.getElementById('month').value.trim();
 	var year = document.getElementById('year').value.trim();
-	var bloodGroup = document.getElementById('bloodGroup').value.trim();
-	var ssc = document.getElementById('ssc').value.trim();
-	var hsc = document.getElementById('hsc').value.trim();
-	var bsc = document.getElementById('bsc').value.trim();
+	var bloodGroup = document.regForm.blood_group.value.trim();
+	//var ssc = document.getElementById('ssc').value.trim();
+	//var hsc = document.getElementById('hsc').value.trim();
+	//var bsc = document.getElementById('bsc').value.trim();
 
 
    var name_flag = "";
@@ -21,9 +21,9 @@ function formValidation(){
    var gender_flag = "";
    var dob_flag = "";
    var bloodGroup_flag = "";
-   var ssc = "";
-   var hsc = "";
-   var bse = "";
+   //var ssc = "";
+   //var hsc = "";
+   //var bse = "";
 
    
    // Name Empty Check
@@ -288,7 +288,20 @@ function formValidation(){
 
   }
 
-	if( name_flag != "" || email_flag != "" || gender_flag != "" || dob_flag != ""){
+  if (bloodGroup == ""){
+
+  document.getElementById('blood_err').innerHTML = "blood group required";
+
+  bloodGroup_flag = "error";
+
+  }
+
+  if (bloodGroup_flag == "" ){
+     
+      var obj4 = document.getElementById('blood_err').innerHTML = "";  
+  }
+
+	if( name_flag != "" || email_flag != "" || gender_flag != "" || dob_flag != "" || bloodGroup_flag != ""){
 
       
         return false;
@@ -296,7 +309,8 @@ function formValidation(){
 
 	}else{
 
-           alert("Form submitted");
+           sendToPhp();
+           return true;
 
 	}
 
@@ -310,33 +324,35 @@ function formValidation(){
 function sendToPhp(){
 
 
-  let name = document.getElementById('name').value.trim();
-  let email = document.getElementById('email').value.trim();
-  let gender = document.regForm.gender.value.trim();
-  let day = document.getElementById('day').value.trim();
-  let month = document.getElementById('month').value.trim();
-  let year = document.getElementById('year').value.trim();
-  let bloodGroup = document.getElementById('bloodGroup').value.trim();
-  let ssc = document.getElementById('ssc').value.trim();
-  let hsc = document.getElementById('hsc').value.trim();
-  let bsc = document.getElementById('bsc').value.trim();
+  var name = document.getElementById('name').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var gender = document.regForm.gender.value.trim();
+  var day = document.getElementById('day').value.trim();
+  var month = document.getElementById('month').value.trim();
+  var year = document.getElementById('year').value.trim();
+  var bloodGroup = document.regForm.blood_group.value.trim();
+  //var ssc = document.getElementById('ssc').value.trim();
+  //var hsc = document.getElementById('hsc').value.trim();
+  //var bsc = document.getElementById('bsc').value.trim();
 
 
-  var insert = new XMLHttpRequest();
-  insert.open('POST', 'insert.php', true);
+  var httpr = new XMLHttpRequest();
+  httpr.open('POST', 'insert.php', true);
 
-  
+  httpr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-  insert.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhttp.onreadystatechange = function(){
+  httpr.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
       
-      document.getElementById('').innerHTML = this.responseText;
+      document.getElementById('submit_response').innerHTML = this.responseText;
     }
   }
 
 
-  insert.send(name&email&gender&day&month&year&bloodGroup&ssc&hsc&bse);
+  httpr.send("name="+name+"&"+"email="+email+"&"+"gender="+gender+"&"+"day="+day+"&"+"month="+month+"&"+"year="+year+"&"+"blood="+bloodGroup);
+
+  return true;
+  
   
 
 
