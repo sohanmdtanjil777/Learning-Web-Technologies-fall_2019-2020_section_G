@@ -322,18 +322,21 @@ function sendToPhp(){
   let bsc = document.getElementById('bsc').value.trim();
 
 
-  var xhttp = new XMLHttpRequest();
-  xhttp.open('POST', 'insert.php', true);
+  var insert = new XMLHttpRequest();
+  insert.open('POST', 'insert.php', true);
 
-  xhttp.send();
   
-  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  insert.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
       
-      document.getElementById('search').innerHTML = this.responseText;
+      document.getElementById('').innerHTML = this.responseText;
     }
   }
+
+
+  insert.send(name&email&gender&day&month&year&bloodGroup&ssc&hsc&bse);
   
 
 
