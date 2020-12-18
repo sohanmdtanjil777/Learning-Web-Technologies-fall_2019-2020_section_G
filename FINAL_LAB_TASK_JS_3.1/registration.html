@@ -21,7 +21,7 @@
 </head>
 <body>
 	<div align="center">
-          <form name="regForm" action="regtest.php" method="post" onsubmit="return formValidation()" >
+          <form name="regForm" action="regtest.php" method="post" onsubmit="return formValidation()">
 
 	          <table border="1px solid black" style="width: 500px;">
 		         <tr>
@@ -69,9 +69,9 @@
 		        <tr>
 		        	<td>Degree</td>
 		        	<td>
-		        		<input type="checkbox" id="ssc" name="checkbox[]" value=""> SSC 
-                        <input type="checkbox" id="hsc" name="checkbox[]" value="">HSC 
-                        <input type="checkbox" id="bsc" name="checkbox[]" value="">BSC
+		        		<input  type="checkbox" id="ch1" name="check[]" value="SSC"> SSC 
+                        <input  type="checkbox" id="ch2" name="check[]" value="HSC">HSC 
+                        <input  type="checkbox" id="ch3" name="check[]" value="BSC">BSC
 		        	</td>
 		        	<td ><span id="degree_err"></span></td>
 		        </tr>
@@ -85,7 +85,7 @@
 		        </tr>
 		        <tr>
 		        	<td align="right" colspan="3">
-		        		<input type="submit" value="Submit">
+		        		<input type="submit" name="submit" value="Submit">
 		        		<input type="reset" value="Reset" >
 		        	</td>
 		        </tr>

@@ -1,30 +1,27 @@
-<?php 
-
-    $location = 'localhost';
-	$dbuser	= 'root';
-	$dbpass	= '';
-	$database = 'ajax_practice'; 
-
-	function getConnection(){
-		
-		global $location;
-		global $dbuser;
-		global $dbpass;
-		global $database;
-
-		$conn = mysqli_connect($location, $dbuser, $dbpass, $database);
-		return $conn;
-	}
-
-
-
-
-?>
-
-
-
 <?php
 
+require_once('service.php');
+
+
+if(isset($_REQUEST['email_check'])){
+
+
+  	$email_check = $_REQUEST['email_check'];
+
+  	$flag2 = emailExist($email_check);
+
+  	if($flag2){
+
+  		echo "email allready exists";
+  	}
+
+
+
+  }
+
+
+
+if(isset($_REQUEST['name'])){
 
 
 if (isset($_REQUEST['name'])){
@@ -57,33 +54,20 @@ if (isset($_REQUEST['blood'])){
 
 }
 
+$flag = insertUser($uname,$email,$gender,$dob,$blood);
 
-$conn = getConnection();
+  
+  if ($flag){
 
+  	echo "DAta Inserted";
 
-
-$sql = "INSERT INTO ajax_test  VALUES ('', '$uname', '$email', '$gender', '$dob', '$blood')";
-
-
-
-
+  }
 
 
-    if(mysqli_query($conn, $sql)){
-
-			echo "Data Inserted"; 
-
-		}else{
-
-			echo "NOt inserted";
-
-		}
-
-
-  //echo "text show";
+}
 
 
 
 
+?>
 
- ?>

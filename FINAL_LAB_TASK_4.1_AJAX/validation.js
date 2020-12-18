@@ -330,7 +330,7 @@ function sendToPhp(){
   var day = document.getElementById('day').value.trim();
   var month = document.getElementById('month').value.trim();
   var year = document.getElementById('year').value.trim();
-  var bloodGroup = document.regForm.blood_group.value.trim();
+  var bloodGroup = document.regForm.blood_group.value;
   //var ssc = document.getElementById('ssc').value.trim();
   //var hsc = document.getElementById('hsc').value.trim();
   //var bsc = document.getElementById('bsc').value.trim();
@@ -356,5 +356,29 @@ function sendToPhp(){
   
 
 
+
+}
+
+function emailCheck(){
+
+  var email = document.getElementById('email').value.trim();
+
+  var httpr = new XMLHttpRequest();
+  httpr.open('POST', 'insert.php', true);
+
+  httpr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  httpr.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+
+
+      document.getElementById('email_exists').innerHTML = this.responseText;
+
+    
+    }
+  }
+
+  httpr.send("email_check="+email);
+  
 
 }

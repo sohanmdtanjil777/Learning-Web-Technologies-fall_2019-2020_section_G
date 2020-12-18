@@ -13,9 +13,14 @@ function formValidation(){
 	var month = document.getElementById('month').value.trim();
 	var year = document.getElementById('year').value.trim();
 	var bloodGroup = document.regForm.bloodGroup.value.trim();
-	var ssc = document.getElementById('ssc').value.trim();
-	var hsc = document.getElementById('hsc').value.trim();
-	var bsc = document.getElementById('bsc').value.trim();
+  var inputElements = document.getElementById('ch1').value;
+  var inputElements = document.getElementById('ch2').value;
+  var inputElements = document.getElementById('ch3').value;
+
+
+
+	
+	
 
 
    var name_flag = "";
@@ -23,6 +28,7 @@ function formValidation(){
    var gender_flag = "";
    var dob_flag = "";
    var blood_flag ="";
+   var degree_flag = "";
    
    // Name Empty Check
 
@@ -51,7 +57,7 @@ function formValidation(){
 
       name_flag = "error";
 
-	      //return false; 
+	      return false; 
 
 		}
 	}
@@ -208,8 +214,8 @@ function formValidation(){
 
         var notallowed = email.indexOf(".@");
         var notallowed1 = email.indexOf("..");
-		var atposition = email.indexOf("@");
-		var firstDot  = email.indexOf(".");
+		    var atposition = email.indexOf("@");
+		    var firstDot  = email.indexOf(".");
         var lastDot = email.lastIndexOf(".");
         var lengthOfEmail = email.length;
 
@@ -316,8 +322,21 @@ function formValidation(){
       var obj4 = document.getElementById('blood_err').innerHTML = "";  
   }
 
+if(!ch1.checked && !ch2.checked && !ch3.checked){
 
-	if( name_flag != "" || email_flag != "" || gender_flag != "" || dob_flag != "" || blood_flag != "" ){
+    document.getElementById('degree_err').innerHTML = "choose degree";
+
+    degree_flag = "error";
+
+}
+
+if(degree_flag == ""){
+
+  var obj5 = document.getElementById('degree_err').innerHTML = "";
+}
+
+
+	if( name_flag != "" || email_flag != "" || gender_flag != "" || dob_flag != "" || blood_flag != "" || degree_flag != ""){
 
       
         return false;

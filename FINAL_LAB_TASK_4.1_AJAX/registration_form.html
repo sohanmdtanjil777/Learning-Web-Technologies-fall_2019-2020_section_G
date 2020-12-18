@@ -35,7 +35,11 @@
 		        </tr>
 		        <tr>
 		        	<td>Email</td>
-		        	<td><input type="email" id="email" name="email"></td>
+		        	<td><input type="email" id="email" name="email" onkeyup="emailCheck();"><br>
+
+                      <span id="email_exists"></span>
+
+		        	</td>
 		        	<td ><span id="email_err"></span></td>
 		        </tr>
 		        <tr>
