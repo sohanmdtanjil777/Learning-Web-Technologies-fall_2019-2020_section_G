@@ -219,16 +219,27 @@ function registerValidation(){
 
    }
 
-	
+   if (uname == ""){
 
-	
-	
+     
 
-  
-  
-  
+    document.getElementById('uname_err').innerHTML = "give a user name ";
 
-  
+    uname_flag = "error";
+
+     
+
+  }
+
+
+  if (password == ""){
+
+
+    document.getElementById('uname_err').innerHTML = "give a password ";
+
+  }
+
+
 
 	if(){
 
@@ -244,6 +255,37 @@ function registerValidation(){
 	}
 
 
+
+}
+
+
+function sendToPhp(){
+
+
+  var name = document.getElementById('name').value.trim();
+  var contact = document.getElementById('contact').value.trim();
+  var uname = document.getElementById('uname').value.trim();
+  var password = document.getElementById('password').value.trim();
+
+
+  var httpr = new XMLHttpRequest();
+  httpr.open('POST', 'registerCheck.php', true);
+
+  httpr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  httpr.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+      
+      document.getElementById('').innerHTML = this.responseText;
+    }
+  }
+
+
+  httpr.send();
+
+  return true;
+  
+  
 
 
 
