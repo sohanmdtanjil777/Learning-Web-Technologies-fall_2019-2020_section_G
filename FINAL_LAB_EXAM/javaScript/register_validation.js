@@ -175,9 +175,9 @@ function registerValidation(){
 
 	     
 
-		document.getElementById('email_err').innerHTML = "Give your email address ";
+		document.getElementById('contact_err').innerHTML = "Give your contact no ";
 
-		email_flag = "error";
+		contact_flag = "error";
 
 		//return false;
 	}
@@ -206,13 +206,13 @@ function registerValidation(){
 
    }
 
-   if (alphaCount != 0){
+   if (aCount != 0){
 
          
 
-    document.getElementById('name_err').innerHTML = " name only contain A to Z or a to z ";
+    document.getElementById('contact_err').innerHTML = " contact only contain numbers ";
 
-    name_flag = "error";
+    contact_flag = "error";
 
    }
 
