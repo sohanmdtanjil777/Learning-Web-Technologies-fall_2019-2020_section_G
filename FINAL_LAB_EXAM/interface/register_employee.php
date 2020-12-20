@@ -53,5 +53,8 @@
 		</fieldset>
 	</form>
 </div>
+
+
+<script type="text/javascript" src="../javaScript/register_validation.js"></script>
 </body>
 </html>

@@ -237,11 +237,13 @@ function registerValidation(){
 
     document.getElementById('uname_err').innerHTML = "give a password ";
 
+    pass_flag = "error";
+
   }
 
 
 
-	if(){
+	if(name_flag != "" || contact_flag != "" uname_flag != "" || pass_flag != ""){
 
       
         return false;
